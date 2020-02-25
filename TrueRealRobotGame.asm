@@ -1,6 +1,6 @@
 ########################################################################
 # Program: RobotGame       			        Programmer: Osman Halwani
-# Due Date: Nov 14, 2019					Course: CS2640
+# Due Date: Dec 13, 2019					Course: CS2640
 ########################################################################
 # Overall Program Functional Description:
 #	This is a robot game. The player moves around trying to avoid robots. These robots
@@ -10,7 +10,8 @@
 ########################################################################
 # Register usage in Main:
 #   $v0, $a0 -- for subroutine linkage and general calculations
-#	
+#	$t0-$t6 -- used to hold asciiz codes also for generals calculations 
+#    $s1 -- to hold moves
 ########################################################################
 # Pseudocode Description:
 #	1. Asks for seed
@@ -123,9 +124,9 @@ mainLoop:
 		beq  $s1 , $t2 ,  movewB  # if move left is true branch
 		beq  $s1 , $t3 ,  moveeB  # if move right is true branch
 		beq  $s1 , $t4 ,  movejB  # if move jump is true branch
-		#beq  $s1 , $t5 ,  movenB  # if move q is true branch
+		beq  $s1 , $t5 ,  leave # if move q is true branch
 		#beq  $s1 , $t6 ,  movenB  # if move p is true branch
-		beq  $s1 , $t6 ,  leave  # if move p is true branch
+		beq  $s1 , $t6 ,   moveBots  # if move p is true branch
 		j moveBots
 		
 		la   $a0 , objects
